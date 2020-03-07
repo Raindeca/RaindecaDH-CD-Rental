@@ -25,11 +25,11 @@ $router->get('/key', function () {
 $router->group([
     'prefix' => 'api/v1',
 ], function () use ($router) {
-    $router->get('/cd/collection', 'CdController@index');
-    $router->get('/cd/collection/{id}', 'CdController@show');
-    $router->post('/cd/collection', 'CdController@store');
-    $router->patch('/cd/collection/{id}', 'CdController@update');
-    $router->delete('/cd/collection/{id}', 'CdController@destroy');
+    $router->get('/admin/cd/collection', 'CdController@index');
+    $router->get('/admin/cd/collection/{id}', 'CdController@show');
+    $router->post('/admin/cd/collection', 'CdController@store');
+    $router->patch('/admin/cd/collection/{id}', 'CdController@update');
+    $router->delete('/admin/cd/collection/{id}', 'CdController@destroy');
 });
 
 // //Costumer's endpoint
