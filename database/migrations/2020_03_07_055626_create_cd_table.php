@@ -16,7 +16,7 @@ class CreateCdTable extends Migration
         Schema::create('cd', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->float('rate');
+            $table->integer('rate');
             $table->string('category');
             $table->integer('quantity');
         });
