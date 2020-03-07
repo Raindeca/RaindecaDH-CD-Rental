@@ -72,11 +72,19 @@ class CdController extends Controller
         ]);
 
         //find the CD that you seek for an update.
+        $cd = $this->cd->find($CdId);
+        
+        //return error if no result.
+        if (empty($CdId)) {
+            return "No such CD found";
+        }
+
+        //update the CD.
         $cd = $this->cd-->update([
             'title' => $request->input('title'),
-            'rate' => $request->input('title'),
-            'category' => $request->input('title'),
-            'quantity' => $request->input('title'),
+            'rate' => $request->input('rate'),
+            'category' => $request->input('category'),
+            'quantity' => $request->input('quantity'),
         ]);
 
         return $cd;
