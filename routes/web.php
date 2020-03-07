@@ -32,11 +32,21 @@ $router->group([
     $router->delete('/admin/cd/collection/{id}', 'CdController@destroy');
 });
 
+
+//Costumer profile endpoint
+$router->group([
+    'prefix' => 'api/v1',
+], 
+    function () use ($router) {
+    $router->get('/user/profile/{id}', 'ProfileController@show');
+    $router->patch('/admin/cd/collection/{id}', 'ProfileController@update');
+});
+
 //Costumer CDs endpoint
 $router->group([
     'prefix' => 'api/v1',
 ], function () use ($router) {
     $router->get('/user/cd/collection', 'CostumerController@index');
     $router->get('/user/cd/collection/{id}', 'CostumerController@show');
-    $router->patch('/user/cd/collection/{id}/{quantity}', 'CostumerController@update');
+    $router->patch('/user/cd/collection/{id}', 'CostumerController@update');
 });
