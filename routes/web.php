@@ -21,7 +21,7 @@ $router->get('/key', function () {
     return str_random(32);
 });
 
-//CD's endpoint
+//Admin CDs endpoint
 $router->group([
     'prefix' => 'api/v1',
 ], function () use ($router) {
@@ -32,14 +32,11 @@ $router->group([
     $router->delete('/admin/cd/collection/{id}', 'CdController@destroy');
 });
 
-// //Costumer's endpoint
-// $router->group([
-//     'prefix' => 'api/v1',
-// ], function () use ($router) {
-//     $router->get('/account/profile', 'CostumerController@index');
-//     $router->get('/account/profile/{id}', 'CostumerController@show');
-//     $router->post('/account/profile', 'CostumerController@store');
-//     $router->patch('/account/profile/{id}', 'CostumerController@update');
-//     $router->delete('/account/profile/{id}', 'CostumerController@destroy');
-    
-// });
+//Costumer CDs endpoint
+$router->group([
+    'prefix' => 'api/v1',
+], function () use ($router) {
+    $router->get('/user/cd/collection', 'CostumerController@index');
+    $router->get('/user/cd/collection/{id}', 'CostumerController@show');
+    $router->patch('/user/cd/collection/{id}/{quantity}', 'CostumerController@update');
+});
