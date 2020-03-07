@@ -17,15 +17,29 @@ $router->get('/', function () use ($router) {
 
 
 //Generate an application key
-$router->get('/key', function() {
+$router->get('/key', function () {
     return str_random(32);
 });
 
-//Testing the router activity
-$router->get('/foo', function() {
-    return 'Hello GET Method has been activated!';
+//CD's endpoint
+$router->group([
+    'prefix' => 'api/v1',
+], function () use ($router) {
+    $router->get('/cd/collection', 'CdController@index');
+    $router->get('/cd/collection/{id}', 'CdController@show');
+    $router->post('/cd/collection', 'CdController@store');
+    $router->patch('/cd/collection/{id}', 'CdController@update');
+    $router->delete('/cd/collection/{id}', 'CdController@destroy');
 });
 
-$router->post('/bar', function() {
-    return 'testing testing testing!';
-});
+// //Costumer's endpoint
+// $router->group([
+//     'prefix' => 'api/v1',
+// ], function () use ($router) {
+//     $router->get('/account/profile', 'CostumerController@index');
+//     $router->get('/account/profile/{id}', 'CostumerController@show');
+//     $router->post('/account/profile', 'CostumerController@store');
+//     $router->patch('/account/profile/{id}', 'CostumerController@update');
+//     $router->delete('/account/profile/{id}', 'CostumerController@destroy');
+    
+// });
