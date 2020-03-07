@@ -19,3 +19,42 @@ If you discover a security vulnerability within Lumen, please send an e-mail to 
 ## License
 
 The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+
+# Deca-CDProblem Basic API
+
+## Prerequiresites
+* MySQL **v5.6**
+* Php **v7.0.9**
+* Lumen Framework **v5.5.2**
+
+## Preparation
+Ensure you have cloned/pulled the repository to your local. Open terminal in the root repository and run all these commands.
+
+1. Access your Application Locally. you will receive local link to access the API
+    ```sh
+    php -S localhost:8000 -t public
+    ```
+2. Configure your database setup in order to connect this API to your database. Access the setup by config it via environment hidden folder.
+    ```sh
+    .env
+    ```
+    
+3. Migrating the data to your local database.
+     ```sh
+    php artisan migrating --seed
+    ```
+
+## Usages
+at this point, you will be able to use this API completely
+
+1. Open the endpoint lists from web.php at router folder
+
+2. Enter the local url with their respective endpoint. example:
+    ```sh
+    http://localhost:8000/admin/cd/collection
+    ```
+
+3. For every method that included POST, PATCH, DELETE at web.php, should be checked via third-party software. example: Postman (https://www.postman.com/downloads/)
+
+4. Close your terminal by pressing ctrl+c or simply close via GUI button
