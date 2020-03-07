@@ -39,29 +39,28 @@ class CostumerController extends Controller
     }
 
 
-    //update info for a spesific CD.
-    public function update(Request $request, $CdId, $CdQuantity) {
+   //update info for a spesific CD.
+   public function update(Request $request, $CdId) {
 
-        // //Validate if the input is correct for each field given.
-        // $this->validate($request, [
-        //     'quantity' => 'required|integer',
-        // ]);
-        
-        $cd = $this->cd->find($CdId);
-        
-        //return error if no result.
-        if (empty($CdId)) {
-            return "No such CD found";
-        }
+    //Validate if the input is correct for each field given.
+    $this->validate($request, [
+        'quantity' => 'required|integer',
+    ]);
 
-        //find the CD that you seek for an update.
+    //find the CD that you seek for an update.
+    $cd = $this->cd->find($CdId);
+    
+    //return error if no result.
+    if (empty($CdId)) {
+        return "No such CD found";
+    }
 
-        $cd = $this->cd->update([
-            'quantity' => 'quantity' - $CdQuantity
-        ]);
-        
-        
-        return $cd;
+    //update the CD.
+    $cd = $this->cd-->update([
+        'quantity' => $request->input('quantity'),
+    ]);
+
+    return $cd;
     }
 
 }
